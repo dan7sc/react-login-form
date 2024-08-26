@@ -19,5 +19,11 @@ export const InputContainer = styled.div`
         border: 0;
         outline: none;
     }
+`
 
+export const ErrorMessage = styled.p`
+    color: red;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-left: 12px;
 `

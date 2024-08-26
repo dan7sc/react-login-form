@@ -1,14 +1,26 @@
-import { InputContainer } from "./styles";
+import { ErrorMessage, InputContainer } from "./styles";
 import { IInputProps } from "././types";
+import { Controller } from "react-hook-form";
 
-const Input = ({ ...rest }: IInputProps) => {
+const Input = ({ control, name, errorMessage, ...rest }: IInputProps) => {
     return (
         <>
             <InputContainer>
-                <input
-                    {...rest}
+                <Controller
+                    control={control}
+                    name={name}
+                    render={({ field: { onChange, onBlur, value, ref } }) => (
+                        <input
+                            {...rest}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            value={value}
+                            ref={ref}
+                        />
+                    )}
                 />
             </InputContainer>
+            {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null}
         </>
     );
 };
